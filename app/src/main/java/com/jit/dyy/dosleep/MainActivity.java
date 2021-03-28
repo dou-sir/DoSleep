@@ -1,6 +1,7 @@
 package com.jit.dyy.dosleep;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,8 +9,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     RoundedImageView ivMenu;
     @BindView(R.id.tvBarTitle)
     TextView tvBarTitle;
-    @BindView(R.id.llMain)
-    LinearLayout llMain;
+    @BindView(R.id.flMain)
+    FrameLayout flMain;
     @BindView(R.id.navView)
     NavigationView navView;
     @BindView(R.id.dlMenu)
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     TextView tvMore;
     @BindView(R.id.llMore)
     LinearLayout llMore;
+    @BindView(R.id.fbSleep)
+    FloatingActionButton fbSleep;
 
     private FragmentManager fragmentManager;
 
@@ -65,34 +68,34 @@ public class MainActivity extends AppCompatActivity {
             HomeFragment homeFragment = new HomeFragment();
             fmTransaction(homeFragment);
             ivHome.setImageResource(R.drawable.moon1);
-            tvHome.setTextAppearance(getApplicationContext(),R.style.textSelected);
+            tvHome.setTextAppearance(getApplicationContext(), R.style.textSelected);
             ivMore.setImageResource(R.drawable.more0);
-            tvMore.setTextAppearance(getApplicationContext(),R.style.textUnselected);
+            tvMore.setTextAppearance(getApplicationContext(), R.style.textUnselected);
         }
         if (view.getId() == R.id.llMore) {
             MoreFragment moreFragment = new MoreFragment();
             fmTransaction(moreFragment);
             ivMore.setImageResource(R.drawable.more1);
-            tvMore.setTextAppearance(getApplicationContext(),R.style.textSelected);
+            tvMore.setTextAppearance(getApplicationContext(), R.style.textSelected);
             ivHome.setImageResource(R.drawable.moon0);
-            tvHome.setTextAppearance(getApplicationContext(),R.style.textUnselected);
+            tvHome.setTextAppearance(getApplicationContext(), R.style.textUnselected);
         }
 
     }
 
-    private void init(){
+    private void init() {
         fragmentManager = getSupportFragmentManager();
         //初始化fragment
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         HomeFragment homeFragment = new HomeFragment();
         //todo 传值时做
-        fragmentTransaction.add(R.id.llMain,homeFragment);
+        fragmentTransaction.add(R.id.flMain, homeFragment);
         fragmentTransaction.commit();
     }
 
-    private void fmTransaction(Fragment fragment){
+    private void fmTransaction(Fragment fragment) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.llMain,fragment);
+        fragmentTransaction.replace(R.id.flMain, fragment);
         fragmentTransaction.commit();
     }
 }
