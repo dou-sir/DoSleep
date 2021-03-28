@@ -3,4 +3,15 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="selected">#6495ED</color>
+    <color name="unselected">#C0C0C0</color>
+    <color name="dstheme0">#051e25</color>
+    <color name="dstheme1">#072229</color>
+    <color name="dstheme2">#0b2830</color>
+    <color name="dstheme3">#0e2d36</color>
+    <color name="dstheme4">#133640</color>
+    <color name="dstheme5">#173e48</color>
+    <color name="dstheme6">#1d4854</color>
+    <color name="dstheme7">#1e4a56</color>
+    <color name="dsAccent">#FFFBD9</color>
 </resources>
