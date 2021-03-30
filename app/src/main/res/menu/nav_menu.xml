@@ -3,18 +3,20 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/moon64"
+            android:icon="@drawable/moon1"
             android:title="主页"/>
         <item
-            android:id="@+id/nav_modify_user"
-            android:icon="@drawable/moon64"
-            android:title="修改个人信息"/>
+            android:id="@+id/nav_community"
+            android:icon="@drawable/talk"
+            android:title="梦话社区"/>
         <item
-            android:id="@+id/nav_showself"
-            android:icon="@drawable/moon64"
-            android:title="一分钟了解自己"/>
-
-
+            android:id="@+id/nav_diary"
+            android:icon="@drawable/note"
+            android:title="梦话日记"/>
+        <item
+            android:id="@+id/nav_more"
+            android:icon="@drawable/more1"
+            android:title="更多"/>
 
     </group>
 

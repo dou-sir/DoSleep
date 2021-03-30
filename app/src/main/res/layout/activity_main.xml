@@ -29,10 +29,18 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
-                android:text="主页"
+                android:text=" "
                 android:textSize="22dp"
                 android:textColor="#e4e2a8"
                 android:textStyle="bold"/>
+            <ImageButton
+                android:id="@+id/ibRefresh"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/refresh"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"/>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"

@@ -1,18 +1,21 @@
 package com.jit.dyy.dosleep;
 
 
-import android.graphics.Bitmap;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,27 +25,16 @@ import butterknife.Unbinder;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MoreFragment extends Fragment {
+public class MoreFragment extends Fragment implements AdapterView.OnItemClickListener {
 
 
-    @BindView(R.id.title)
-    TextView mtitle;
-    @BindView(R.id.text_beginLoading)
-    TextView textBeginLoading;
-    @BindView(R.id.text_Loading)
-    TextView textLoading;
-    @BindView(R.id.text_endLoading)
-    TextView textEndLoading;
-    @BindView(R.id.webView)
-    WebView webView;
+    @BindView(R.id.lv_more)
+    ListView lvMore;
+
     Unbinder unbinder;
-    WebSettings webSettings;
-
-
-    public MoreFragment() {
-        // Required empty public constructor
-    }
-
+    private List<Map<String, Object>> data;
+    private int[] icons = {R.drawable.talk, R.drawable.note};
+    private String[] titles = {"梦话社区","梦话日记"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,101 +42,96 @@ public class MoreFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_more, container, false);
         unbinder = ButterKnife.bind(this, view);
-        init();
         return view;
     }
 
-    private void init(){
-        //支持缩放
-        webView.getSettings().setSupportZoom(true);
-        //设置出现缩放工具
-        webView.getSettings().setBuiltInZoomControls(true);
-        //扩大比例的缩放
-        webView.getSettings().setUseWideViewPort(true);
-        //js交互
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        webView.getSettings().setLoadWithOverviewMode(true);
+    /**
+     * Called when the fragment's activity has been created and this
+     * fragment's view hierarchy instantiated.  It can be used to do final
+     * initialization once these pieces are in place, such as retrieving
+     * views or restoring state.  It is also useful for fragments that use
+     * {@link #setRetainInstance(boolean)} to retain their instance,
+     * as this callback tells the fragment when it is fully associated with
+     * the new activity instance.  This is called after {@link #onCreateView}
+     * and before {@link #onViewStateRestored(Bundle)}.
+     *
+     * @param savedInstanceState If the fragment is being re-created from
+     *                           a previous saved state, this is the state.
+     */
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        init();
+    }
 
-        webSettings = webView.getSettings();
-        webView.loadUrl("http://dosleep.tech/");
-        //设置不用系统浏览器打开,直接显示在当前Webview
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
-        });
-
-        //设置WebChromeClient类
-        webView.setWebChromeClient(new WebChromeClient() {
-
-
-            //获取网站标题
-            @Override
-            public void onReceivedTitle(WebView view, String title) {
-                System.out.println("标题在这里");
-                mtitle.setText(title);
-            }
-
-
-            //获取加载进度
-            @Override
-            public void onProgressChanged(WebView view, int newProgress) {
-                if (newProgress < 100) {
-                    String progress = newProgress + "%";
-                    textLoading.setText(progress);
-                } else if (newProgress == 100) {
-                    String progress = newProgress + "%";
-                    textLoading.setText(progress);
-                }
-            }
-        });
-
-
-        //设置WebViewClient类
-        webView.setWebViewClient(new WebViewClient() {
-            //设置加载前的函数
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                System.out.println("开始加载了");
-                textBeginLoading.setText("开始加载了");
-
-            }
-
-            //设置结束加载函数
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                textEndLoading.setText("结束加载了");
-
-            }
-        });
+    /**
+     * Called when the hidden state (as returned by {@link #isHidden()} of
+     * the fragment has changed.  Fragments start out not hidden; this will
+     * be called whenever the fragment changes state from that.
+     *
+     * @param hidden True if the fragment is now hidden, false otherwise.
+     */
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
 
     }
 
-    //点击返回上一页面而不是退出浏览器
+    private void init() {
+        data = getData();
+        SimpleAdapter adapter = new SimpleAdapter(
+                getActivity(), //当前activity
+                data,//适配器需要解析的数据
+                R.layout.lv_style_more,//样式文件
+                new String[]{"image", "title"},//data中Map的文字
+                new int[]{R.id.iv_row, R.id.tv_row});//样式文件id
+        lvMore.setAdapter(adapter);
+        lvMore.setOnItemClickListener(this);
+    }
 
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
-            webView.goBack();
-            return true;
+
+    private List<Map<String,Object>> getData(){
+        data = new ArrayList<Map<String, Object>>();
+        for(int i=0;i<icons.length;i++){
+            Map<String,Object> hm = new HashMap<String, Object>();
+            hm.put("image",icons[i]);//从图标数组提取图片
+            hm.put("title",titles[i]);//从标题数组中提取文字
+            data.add(hm);//添加进data
         }
-
-        return getActivity().onKeyDown(keyCode, event);
+        return data;
     }
 
     @Override
     public void onDestroyView() {
-        if (webView != null) {
-            webView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
-            webView.clearHistory();
-
-            ((ViewGroup) webView.getParent()).removeView(webView);
-            webView.destroy();
-            webView = null;
-        }
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    /**
+     * Callback method to be invoked when an item in this AdapterView has
+     * been clicked.
+     * <p>
+     * Implementers can call getItemAtPosition(position) if they need
+     * to access the data associated with the selected item.
+     *
+     * @param parent   The AdapterView where the click happened.
+     * @param view     The view within the AdapterView that was clicked (this
+     *                 will be a view provided by the adapter)
+     * @param position The position of the view in the adapter.
+     * @param id       The row id of the item that was clicked.
+     */
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent();
+        switch (position) {//todo
+            case 0:
+                intent.setClass(getContext(),WebviewActivity.class);
+                startActivity(intent);
+                break;
+            case 1:
+                intent.setClass(getContext(),WebviewActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
