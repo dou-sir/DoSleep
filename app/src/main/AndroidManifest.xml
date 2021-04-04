@@ -30,11 +30,22 @@
         </activity>
         <activity android:name=".RecordActivity" />
         <activity android:name=".WebviewActivity"></activity>
+
         <service android:name=".MusicService"
             android:enabled="true"
             android:exported="true"/>
+        <receiver android:name=".MusicWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.jit.dyy.dosleep.changeWidget" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/music_widget_info" />
+        </receiver>
 
-
+        <meta-data android:name="IFLYTEK_APPKEY" android:value="'585d429d'"/>
+        <meta-data android:name="IFLYTEK_CHANNEL" android:value="助手"/>
     </application>
 
 </manifest>
