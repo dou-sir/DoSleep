@@ -1,4 +1,4 @@
-package com.jit.dyy.dosleep;
+package com.jit.dyy.dosleep.service;
 
 
 import android.app.Service;
@@ -7,6 +7,8 @@ import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
+
+import com.jit.dyy.dosleep.R;
 
 import java.io.IOException;
 
@@ -17,7 +19,7 @@ public class MusicService extends Service {
 
     private final IBinder binder = new MyBinder();
     public class MyBinder extends Binder {
-        MusicService getService() {
+        public MusicService getService() {
             return MusicService.this;
         }
     }

@@ -1,4 +1,4 @@
-package com.jit.dyy.dosleep;
+package com.jit.dyy.dosleep.receiver;
 
 
 import android.content.BroadcastReceiver;

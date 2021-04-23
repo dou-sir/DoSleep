@@ -1,4 +1,4 @@
-package com.jit.dyy.dosleep;
+package com.jit.dyy.dosleep.service;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -9,6 +9,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.RemoteViews;
+
+import com.jit.dyy.dosleep.MainActivity;
+import com.jit.dyy.dosleep.R;
+import com.jit.dyy.dosleep.RecordActivity;
 
 
 /**

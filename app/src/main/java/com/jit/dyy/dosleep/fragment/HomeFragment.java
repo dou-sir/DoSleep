@@ -1,4 +1,4 @@
-package com.jit.dyy.dosleep;
+package com.jit.dyy.dosleep.fragment;
 
 
 import android.content.SharedPreferences;
@@ -12,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.jit.dyy.dosleep.R;
+import com.jit.dyy.dosleep.util.SimpleLineChart;
+import com.jit.dyy.dosleep.util.myDB2;
 
 import java.util.HashMap;
 
@@ -67,6 +71,7 @@ public class HomeFragment extends Fragment {
                     cursor.moveToPrevious();
                 }
             }
+//            cursor.close();
             if (time.length != 0) {
                 String[] yItem = {"100", "80", "60", "40", "20", "0"};
                 mSimpleLineChart.setXItem(time);

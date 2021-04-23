@@ -2,7 +2,6 @@ package com.jit.dyy.dosleep;
 
 import android.Manifest;
 import android.animation.ObjectAnimator;
-import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
@@ -44,6 +43,12 @@ import android.widget.SeekBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import com.jit.dyy.dosleep.receiver.AlarmReceiver;
+import com.jit.dyy.dosleep.receiver.MyReceiver;
+import com.jit.dyy.dosleep.service.Music;
+import com.jit.dyy.dosleep.service.MusicService;
+import com.jit.dyy.dosleep.util.myDB2;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -322,8 +327,7 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
                 setLast_music();
                 break;
             case R.id.ibClose:
-                isPlaying = false;
-                musicService.playAndPause();
+                stop();
                 finish();
                 break;
         }
@@ -508,6 +512,12 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
         sqLiteDatabase.insert("grade_table", null, cv);
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stop();
+    }
 
     //todo music
     private void prepareMusic() {

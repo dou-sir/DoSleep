@@ -1,4 +1,4 @@
-package com.jit.dyy.dosleep;
+package com.jit.dyy.dosleep.fragment;
 
 
 import android.content.Intent;
@@ -11,6 +11,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+import com.jit.dyy.dosleep.DiaryActivity;
+import com.jit.dyy.dosleep.R;
+import com.jit.dyy.dosleep.WebviewActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -129,7 +133,7 @@ public class MoreFragment extends Fragment implements AdapterView.OnItemClickLis
                 startActivity(intent);
                 break;
             case 1:
-                intent.setClass(getContext(),WebviewActivity.class);
+                intent.setClass(getContext(),DiaryActivity.class);
                 startActivity(intent);
                 break;
         }

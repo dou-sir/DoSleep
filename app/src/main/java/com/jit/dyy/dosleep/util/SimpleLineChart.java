@@ -1,4 +1,4 @@
-package com.jit.dyy.dosleep;
+package com.jit.dyy.dosleep.util;
 
 import android.content.Context;
 import android.graphics.Canvas;

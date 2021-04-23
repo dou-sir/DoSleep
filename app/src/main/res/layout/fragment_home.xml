@@ -52,7 +52,7 @@
                     android:id="@+id/suggest"/>
             </LinearLayout>
         </RelativeLayout>
-        <com.jit.dyy.dosleep.SimpleLineChart
+        <com.jit.dyy.dosleep.util.SimpleLineChart
             android:id="@+id/simpleLineChart"
             android:layout_width="match_parent"
             android:layout_height="200dp"

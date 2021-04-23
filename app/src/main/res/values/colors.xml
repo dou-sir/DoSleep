@@ -32,4 +32,5 @@
     <color name="white">#FFFFFF</color>
     <color name="darkBlue">#0e1634</color>
     <color name="greyglass">#CCFFFFFF</color>
+    <color name="glass">#55FFFFFF</color>
 </resources>

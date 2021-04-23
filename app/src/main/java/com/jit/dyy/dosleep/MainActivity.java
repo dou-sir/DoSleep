@@ -21,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.jit.dyy.dosleep.fragment.HomeFragment;
+import com.jit.dyy.dosleep.fragment.MoreFragment;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import butterknife.BindView;
@@ -146,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.nav_diary:
-                        startActivity(new Intent(MainActivity.this,WebviewActivity.class));
+                        startActivity(new Intent(MainActivity.this,DiaryActivity.class));
                         break;
                     case R.id.nav_more:
                         MoreFragment moreFragment = new MoreFragment();

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/diary_edit"
+    tools:context="com.jit.dyy.dosleep.DiaryActivity">
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/RLdiary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@drawable/diary_bg">
+
+        <ListView
+            android:id="@+id/diary_list"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="7dp"
+            android:id="@+id/add_diary"
+            android:background="@drawable/fab"
+            android:src="@drawable/ic_plus"/>
+
+    </RelativeLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="翻开日记"
+        android:textSize="17sp"
+        android:textColor="@color/blue"
+        android:background="@drawable/shape"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:elevation="10dp"
+        android:id="@+id/login"/>
+
+    <ImageButton
+        android:id="@+id/ibClose"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_round"
+        android:src="@drawable/close" />
+</RelativeLayout>

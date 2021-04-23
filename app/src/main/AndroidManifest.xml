@@ -29,23 +29,38 @@
             </intent-filter>
         </activity>
         <activity android:name=".RecordActivity" />
-        <activity android:name=".WebviewActivity"></activity>
+        <activity android:name=".WebviewActivity" />
+        <activity android:name=".DiaryActivity" />
 
-        <service android:name=".MusicService"
+        <service
+            android:name=".service.MusicService"
             android:enabled="true"
-            android:exported="true"/>
-        <receiver android:name=".MusicWidget">
+            android:exported="true" />
+
+        <receiver android:name=".service.MusicWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.jit.dyy.dosleep.changeWidget" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/music_widget_info" />
         </receiver>
+        <receiver android:name=".receiver.MyReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
 
-        <meta-data android:name="IFLYTEK_APPKEY" android:value="'585d429d'"/>
-        <meta-data android:name="IFLYTEK_CHANNEL" android:value="助手"/>
+        <meta-data
+            android:name="IFLYTEK_APPKEY"
+            android:value="&apos;b3ed3453&apos;" />
+        <meta-data
+            android:name="IFLYTEK_CHANNEL"
+            android:value="助手" />
+
+        <activity android:name=".EditDiaryActivity"></activity>
     </application>
 
 </manifest>
