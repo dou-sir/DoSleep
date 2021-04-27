@@ -82,7 +82,7 @@ public class EditDiaryActivity extends Activity {
 //        getWindow().setAttributes(layoutParams);
 //        585d429d b3ed3453
         verifyStoragePermissions();
-        String APP_ID = "b3ed3453";
+        String APP_ID = "585d429d";
         SpeechUtility.createUtility(this, SpeechConstant.APPID + "=" + APP_ID);
 
         final Intent intent = new Intent(EditDiaryActivity.this, DiaryActivity.class);

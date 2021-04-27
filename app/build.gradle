@@ -19,6 +19,14 @@ android {
     }
 
 }
+// 添加插件
+apply plugin: 'com.mob.sdk'
+
+MobSDK {
+    appKey "330852f6f8640" // 替换为mob官方申请的appkey
+    appSecret "ffae22d2d38343cf4c8badf7eef74b8f" // 替换为mob官方申请的appkey对应的appSecret
+    SMSSDK {}
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

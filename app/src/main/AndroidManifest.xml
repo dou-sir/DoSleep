@@ -11,6 +11,12 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_dosleep"
@@ -55,7 +61,7 @@
 
         <meta-data
             android:name="IFLYTEK_APPKEY"
-            android:value="&apos;b3ed3453&apos;" />
+            android:value="&apos;585d429d&apos;" />
         <meta-data
             android:name="IFLYTEK_CHANNEL"
             android:value="助手" />
