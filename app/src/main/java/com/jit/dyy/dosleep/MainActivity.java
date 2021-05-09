@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jit.dyy.dosleep.fragment.HomeFragment;
 import com.jit.dyy.dosleep.fragment.MoreFragment;
@@ -28,6 +29,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.smssdk.ui.companent.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.ibRefresh)
     ImageButton ibRefresh;
 
+    private RoundedImageView iconHead;
+    private TextView tvUsername,tvUsersay;
+    private ImageButton ibLogout;
     private FragmentManager fragmentManager;
 
     @Override
@@ -76,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 //        fmTransaction(homeFragment);
     }
 
-    @OnClick({R.id.ivMenu, R.id.llHome, R.id.llMore, R.id.fbSleep, R.id.ibRefresh})
+    @OnClick({R.id.ivMenu, R.id.llHome, R.id.llMore, R.id.fbSleep})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ivMenu:
@@ -160,6 +165,21 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+        //nav_head
+        View nav_head = navView.getHeaderView(0);
+        iconHead = nav_head.findViewById(R.id.icon_head);
+        tvUsername = nav_head.findViewById(R.id.tv_username);
+        tvUsersay = nav_head.findViewById(R.id.tv_usersay);
+        ibLogout = nav_head.findViewById(R.id.ib_logout);
+
+        iconHead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(MainActivity.this,"aaa",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this,LoginByTelActivity.class));
+            }
+        });
+
 
         fragmentManager = getSupportFragmentManager();
         //初始化fragment

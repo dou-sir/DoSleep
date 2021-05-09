@@ -9,7 +9,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        javaCompileOptions { annotationProcessorOptions {includeCompileClasspath = true }} // lombok
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        // lombok
     }
     buildTypes {
         release {
@@ -23,8 +24,10 @@ android {
 apply plugin: 'com.mob.sdk'
 
 MobSDK {
-    appKey "330852f6f8640" // 替换为mob官方申请的appkey
-    appSecret "ffae22d2d38343cf4c8badf7eef74b8f" // 替换为mob官方申请的appkey对应的appSecret
+    appKey "33205007703d8" // 替换为mob官方申请的appkey
+    appSecret "1fd74fd4bdb1cdabc35df63a7dd3d31b" // 替换为mob官方申请的appkey对应的appSecret
+//    appKey "2fab8fc23b871"
+//    appSecret "63dd84d217364cc851dc05630244c865"
     SMSSDK {}
 }
 

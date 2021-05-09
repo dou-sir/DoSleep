@@ -43,6 +43,7 @@ import android.widget.SeekBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.jit.dyy.dosleep.receiver.AlarmReceiver;
 import com.jit.dyy.dosleep.receiver.MyReceiver;
@@ -378,13 +379,19 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
         public void onSensorChanged(SensorEvent event) {
             switch (event.sensor.getType()) {
                 case Sensor.TYPE_ACCELEROMETER:
-                    accValues = event.values;
+                    accValues = event.values; // 加速度传感器 xyz轴加速度
                     //  使用加速度传感器可以实现了检测手机的摇一摇功能，通过摇一摇，弹出是否退出应用的对话框，选择是则退出应用
                     double value = 1;
                     double max = 3;
+//                    if (Math.abs(accValues[0]) > value || Math.abs(accValues[1]) > value) {
+//                        if (Math.abs(accValues[0]) < max || Math.abs(accValues[1]) < max) {
+//                            num1++;
+//                        }
+//                    }
                     if (Math.abs(accValues[0]) > value || Math.abs(accValues[1]) > value) {
                         if (Math.abs(accValues[0]) < max || Math.abs(accValues[1]) < max) {
                             num1++;
+                            Toast.makeText(RecordActivity.this, "加速度传感"+num1, Toast.LENGTH_SHORT).show();
                         }
                     }
                     break;
