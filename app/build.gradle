@@ -43,6 +43,7 @@ dependencies {
     implementation 'com.android.support:design:26.1.0' // navigation...
     compile 'com.jakewharton:butterknife:8.8.1' // butterknife
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation files('libs/volley.jar') //Volley网络通信框架
     compile files('libs/Msc.jar') // xunfei
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.anthonycr.grant:permissions:1.0'

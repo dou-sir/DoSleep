@@ -3,6 +3,10 @@
 buildscript {
     
     repositories {
+        //阿里仓库服务，加快依赖下载速度
+        maven {url 'https://maven.aliyun.com/repository/jcenter'}
+        maven {url 'https://maven.aliyun.com/repository/google'}
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         google()
         jcenter()
         // 添加Mob Maven地址
@@ -20,6 +24,14 @@ buildscript {
 
 allprojects {
     repositories {
+        //阿里仓库服务，加快依赖下载速度
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://dl.google.com/dl/android/maven2/' }
         google()
         jcenter()
     }

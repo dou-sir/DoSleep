@@ -1,6 +1,8 @@
 package com.jit.dyy.dosleep;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -11,6 +13,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -22,9 +25,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jit.dyy.dosleep.bean.MyappInfo;
+import com.jit.dyy.dosleep.bean.User;
 import com.jit.dyy.dosleep.fragment.HomeFragment;
 import com.jit.dyy.dosleep.fragment.MoreFragment;
+import com.jit.dyy.dosleep.service.UserService;
+import com.jit.dyy.dosleep.util.DataBaseHelper;
 import com.makeramen.roundedimageview.RoundedImageView;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.ibRefresh)
     ImageButton ibRefresh;
 
+    public static MyappInfo myappInfo = new MyappInfo();
+
+    private UserService userService;
     private RoundedImageView iconHead;
     private TextView tvUsername,tvUsersay;
     private ImageButton ibLogout;
@@ -70,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        myappInfo = (MyappInfo) getApplication();
+        userService = new UserService(this);
+        userService.setMUser();
         ButterKnife.bind(this);
         init();
     }
@@ -77,14 +92,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
-//        HomeFragment homeFragment = new HomeFragment();
-//        fmTransaction(homeFragment);
+//        if (MainActivity.myappInfo.getLoginFlag()){
+//            userService.loginByTel(MainActivity.myappInfo.getMUser().getUserTel());
+//            MainActivity.myappInfo.setLoginFlag(false);
+//        }
+        setHeadInfo();
     }
 
-    @OnClick({R.id.ivMenu, R.id.llHome, R.id.llMore, R.id.fbSleep})
+    @OnClick({R.id.ivMenu, R.id.llHome, R.id.llMore, R.id.fbSleep, R.id.ibRefresh})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ivMenu:
+                System.out.println("aaa"+myappInfo.getMUser().toString());
+                setHeadInfo();
                 dlMenu.openDrawer(GravityCompat.START);
                 break;
             case R.id.llHome:
@@ -135,9 +155,11 @@ public class MainActivity extends AppCompatActivity {
             MoreFragment moreFragment = new MoreFragment();
             fmTransaction(moreFragment);
         }
+
     }
 
     private void init() {
+
         navView.setItemIconTintList( null );
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -176,7 +198,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(MainActivity.this,"aaa",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainActivity.this,LoginByTelActivity.class));
+                if (myappInfo.getMUser().getState() == 0)
+                    startActivity(new Intent(MainActivity.this, LoginByTelActivity.class));
+                else
+                    startActivity(new Intent(MainActivity.this, EditInfoActivity.class));
+            }
+        });
+        ibLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(MainActivity.this,"aaa",Toast.LENGTH_SHORT).show();
+                if (myappInfo.getMUser().getState() == 0)
+                    startActivity(new Intent(MainActivity.this, LoginByTelActivity.class));
+//                    System.out.println("aaaa"+userService.loginByTel("18252626192")+"***");
+                else
+                    setLogoutInfo();
             }
         });
 
@@ -189,6 +225,30 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.flMain, homeFragment);
         fragmentTransaction.commit();
     }
+
+    private void setHeadInfo() {
+        if(myappInfo.getMUser().getState() != 0){
+            User mUser = myappInfo.getMUser();
+            if (mUser.getUserName().length()>11){
+                tvUsername.setText("Hi,"+mUser.getUserName().substring(0,12)+"...");
+            }else {
+                tvUsername.setText("Hi,"+mUser.getUserName());
+            }
+            if (mUser.getSlogan() != "null")
+                tvUsersay.setText(mUser.getSlogan());
+            ibLogout.setBackground(getResources().getDrawable(R.drawable.logout));
+        }
+    }
+
+    private void setLogoutInfo() {
+        myappInfo.getMUser().setState(0);
+        tvUsername.setText("Hi,请登录...");
+        tvUsersay.setText("Have a good Sleep!");
+        ibLogout.setBackground(getResources().getDrawable(R.drawable.login));
+
+        userService.logoutUser();
+    }
+
 
     private void fmTransaction(Fragment fragment) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

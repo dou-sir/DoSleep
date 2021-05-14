@@ -37,8 +37,8 @@ public class MoreFragment extends Fragment implements AdapterView.OnItemClickLis
 
     Unbinder unbinder;
     private List<Map<String, Object>> data;
-    private int[] icons = {R.drawable.talk, R.drawable.note};
-    private String[] titles = {"梦话社区","梦话日记"};
+    private int[] icons = {R.drawable.talk, R.drawable.note, R.drawable.test};
+    private String[] titles = {"梦话社区", "梦话日记", "TESTcommunity.bata"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,32 +49,14 @@ public class MoreFragment extends Fragment implements AdapterView.OnItemClickLis
         return view;
     }
 
-    /**
-     * Called when the fragment's activity has been created and this
-     * fragment's view hierarchy instantiated.  It can be used to do final
-     * initialization once these pieces are in place, such as retrieving
-     * views or restoring state.  It is also useful for fragments that use
-     * {@link #setRetainInstance(boolean)} to retain their instance,
-     * as this callback tells the fragment when it is fully associated with
-     * the new activity instance.  This is called after {@link #onCreateView}
-     * and before {@link #onViewStateRestored(Bundle)}.
-     *
-     * @param savedInstanceState If the fragment is being re-created from
-     *                           a previous saved state, this is the state.
-     */
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         init();
     }
 
-    /**
-     * Called when the hidden state (as returned by {@link #isHidden()} of
-     * the fragment has changed.  Fragments start out not hidden; this will
-     * be called whenever the fragment changes state from that.
-     *
-     * @param hidden True if the fragment is now hidden, false otherwise.
-     */
+
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
@@ -111,29 +93,17 @@ public class MoreFragment extends Fragment implements AdapterView.OnItemClickLis
         unbinder.unbind();
     }
 
-    /**
-     * Callback method to be invoked when an item in this AdapterView has
-     * been clicked.
-     * <p>
-     * Implementers can call getItemAtPosition(position) if they need
-     * to access the data associated with the selected item.
-     *
-     * @param parent   The AdapterView where the click happened.
-     * @param view     The view within the AdapterView that was clicked (this
-     *                 will be a view provided by the adapter)
-     * @param position The position of the view in the adapter.
-     * @param id       The row id of the item that was clicked.
-     */
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent();
         switch (position) {//todo
-            case 0:
-                intent.setClass(getContext(),WebviewActivity.class);
-                startActivity(intent);
-                break;
             case 1:
                 intent.setClass(getContext(),DiaryActivity.class);
+                startActivity(intent);
+                break;
+            case 2:
+                intent.setClass(getContext(),WebviewActivity.class);
                 startActivity(intent);
                 break;
         }

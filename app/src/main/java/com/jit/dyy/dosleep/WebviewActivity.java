@@ -54,7 +54,7 @@ public class WebviewActivity extends AppCompatActivity {
         //支持缩放
         webView.getSettings().setSupportZoom(true);
         //设置出现缩放工具
-        webView.getSettings().setBuiltInZoomControls(true);
+//        webView.getSettings().setBuiltInZoomControls(true);
         //扩大比例的缩放
         webView.getSettings().setUseWideViewPort(true);
         //js交互

@@ -7,9 +7,7 @@ import android.content.Intent;
 
 public class AlarmReceiver extends BroadcastReceiver {
 
-	/* (non-Javadoc)
-	 * @see android.content.BroadcastReceiver#onReceive(android.content.Context, android.content.Intent)
-	 */
+
 	@Override
 	public void onReceive(Context arg0, Intent data) {
 //		Log.d(Alarm.TAG, "the time is up,start the alarm...");

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg0"
-    tools:context="com.jit.dyy.dosleep.LoginByTelActivity">
+    tools:context="com.jit.dyy.dosleep.LoginByNameActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,15 +18,15 @@
             android:layout_gravity="center"
             android:src="@mipmap/ic_dosleep"/>
         <EditText
-            android:id="@+id/et_phonenumber"
+            android:id="@+id/et_uname"
             android:layout_width="230dp"
             android:layout_height="45dp"
             android:background="@drawable/translucenttext"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:lines="1"
-            android:inputType="number"
-            android:hint="请输入手机号"
+            android:inputType="text"
+            android:hint="请输入用户名"
             android:gravity="center_horizontal"
             android:textColor="#fefefe" />
         <LinearLayout
@@ -36,23 +36,24 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
             <EditText
-                android:id="@+id/et_verify"
-                android:layout_width="130dp"
+                android:id="@+id/et_pwd"
+                android:layout_width="175dp"
                 android:layout_height="45dp"
                 android:background="@drawable/translucenttext"
                 android:layout_gravity="center"
                 android:lines="1"
-                android:inputType="number"
-                android:hint="请输入验证码"
+                android:hint="请输入密码"
+                android:inputType="textPassword"
                 android:gravity="center_horizontal"
                 android:textColor="#fefefe" />
-            <Button
-                android:id="@+id/bt_sendmessage"
-                android:layout_width="80dp"
+            <TextView
+                android:id="@+id/tv_fgt"
+                android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/translucentbutton"
-                android:text="发送验证码" />
+                android:layout_marginLeft="10dp"
+                android:textStyle="italic"
+                android:textColor="@color/glass"
+                android:text="  忘记 密码？" />
         </LinearLayout>
         <Button
             android:id="@+id/bt_login"
@@ -61,15 +62,15 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@drawable/translucentbutton"
-            android:text="登录 / 注册"
+            android:text="登录"
             android:textSize="18dp"/>
         <TextView
-            android:id="@+id/tv_loginbypwd"
+            android:id="@+id/tv_loginbytel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:text="→账号密码登录"
+            android:text="→手机号登录/注册"
             android:textStyle="italic"
             android:textColor="@color/glass"
             android:textSize="15dp" />

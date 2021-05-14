@@ -40,6 +40,7 @@ public class JsonParser {
 			JSONTokener tokener = new JSONTokener(json);
 			JSONObject joResult = new JSONObject(tokener);
 
+
 			JSONArray words = joResult.getJSONArray("ws");
 			for (int i = 0; i < words.length(); i++) {
 				JSONArray items = words.getJSONObject(i).getJSONArray("cw");

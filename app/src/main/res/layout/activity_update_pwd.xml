@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="@drawable/background_gradient"
+tools:context="com.jit.dyy.dosleep.UpdatePwdActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/glass">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="修改密码"
+            android:textColor="@color/dstheme0"
+            android:textStyle="bold"
+            android:textSize="25dp" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_pwd"
+        android:layout_width="230dp"
+        android:layout_height="45dp"
+        android:background="@drawable/translucenttext"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:lines="1"
+        android:inputType="textPassword"
+        android:hint="请输入旧密码"
+        android:gravity="center_horizontal"
+        android:textColor="#fefefe"/>
+
+    <LinearLayout
+        android:id="@+id/ll_tel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:visibility="gone" >
+        <EditText
+            android:id="@+id/et_phonenumber"
+            android:layout_width="230dp"
+            android:layout_height="45dp"
+            android:background="@drawable/translucenttext"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:lines="1"
+            android:inputType="number"
+            android:hint="请输入手机号"
+            android:gravity="center_horizontal"
+            android:textColor="#fefefe" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/et_verify"
+                android:layout_width="130dp"
+                android:layout_height="45dp"
+                android:background="@drawable/translucenttext"
+                android:layout_gravity="center"
+                android:lines="1"
+                android:inputType="number"
+                android:hint="请输入验证码"
+                android:gravity="center_horizontal"
+                android:textColor="#fefefe" />
+            <Button
+                android:id="@+id/bt_sendmessage"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/translucentbutton"
+                android:text="发送验证码" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_pwd1"
+        android:layout_width="230dp"
+        android:layout_height="45dp"
+        android:background="@drawable/translucenttext"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:lines="1"
+        android:hint="请确认新密码"
+        android:inputType="textPassword"
+        android:gravity="center_horizontal"
+        android:textColor="#fefefe"  />
+    <EditText
+        android:id="@+id/et_pwd2"
+        android:layout_width="230dp"
+        android:layout_height="45dp"
+        android:background="@drawable/translucenttext"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:lines="1"
+        android:hint="请确认密码"
+        android:inputType="textPassword"
+        android:gravity="center_horizontal"
+        android:textColor="#fefefe" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bt_cancel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/translucentbutton_cancel"
+            android:text="取消"
+            android:textSize="18dp"/>
+        <Button
+            android:id="@+id/bt_conf"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/translucentbutton"
+            android:text="确认"
+            android:textSize="18dp"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_byTel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:text="→通过手机号修改"
+        android:textStyle="italic"
+        android:textColor="@color/glass"
+        android:textSize="15dp" />
+    <TextView
+        android:id="@+id/tv_byPwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:text="→通过旧密码修改"
+        android:textStyle="italic"
+        android:textColor="@color/glass"
+        android:textSize="15dp"
+        android:visibility="gone"/>
+
+
+</LinearLayout>
