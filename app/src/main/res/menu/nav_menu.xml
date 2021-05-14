@@ -14,6 +14,18 @@
             android:icon="@drawable/note"
             android:title="梦话日记"/>
         <item
+            android:id="@+id/nav_info"
+            android:icon="@drawable/person_info"
+            android:title="修改个人资料"/>
+        <item
+            android:id="@+id/nav_pwd"
+            android:icon="@drawable/modify_pwd"
+            android:title="修改密码"/>
+        <item
+            android:id="@+id/nav_unregister"
+            android:icon="@drawable/unregister"
+            android:title="注销"/>
+        <item
             android:id="@+id/nav_more"
             android:icon="@drawable/more1"
             android:title="更多"/>
