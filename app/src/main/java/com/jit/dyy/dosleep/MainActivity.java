@@ -177,6 +177,28 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_diary:
                         startActivity(new Intent(MainActivity.this,DiaryActivity.class));
                         break;
+                    case R.id.nav_info:
+                        if(MainActivity.myappInfo.getMUser().getState() != 0){
+                            startActivity(new Intent(MainActivity.this,EditInfoActivity.class));
+                        }else {
+                            startActivity(new Intent(MainActivity.this,LoginByTelActivity.class));
+                        }
+                        break;
+                    case R.id.nav_pwd:
+                        if(MainActivity.myappInfo.getMUser().getState() != 0){
+                            startActivity(new Intent(MainActivity.this,UpdatePwdActivity.class));
+                        }else {
+                            startActivity(new Intent(MainActivity.this,LoginByNameActivity.class));
+                        }
+                        break;
+                    case R.id.nav_unregister:
+                        if(MainActivity.myappInfo.getMUser().getState() != 0){
+                            Toast.makeText(MainActivity.this,"注销测试",Toast.LENGTH_SHORT).show();
+                            setLogoutInfo();
+                        }else {
+                            Toast.makeText(MainActivity.this,"你还没有账号",Toast.LENGTH_SHORT).show();
+                        }
+                        break;
                     case R.id.nav_more:
                         MoreFragment moreFragment = new MoreFragment();
                         fmTransaction(moreFragment);

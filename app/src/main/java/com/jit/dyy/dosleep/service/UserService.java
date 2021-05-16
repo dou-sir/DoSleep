@@ -142,7 +142,7 @@ public class UserService {
                         Boolean flag = jsonObject.getBoolean("flag");
                         Log.d("msg", msg);
                         if( flag ){
-                            Toast.makeText(mcontext, "成功", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(mcontext, "成功", Toast.LENGTH_SHORT).show();
                             JSONObject detail = jsonObject.getJSONObject("detail");
                             User user = new User();
                             user.setUserId(detail.getInt("userId"));

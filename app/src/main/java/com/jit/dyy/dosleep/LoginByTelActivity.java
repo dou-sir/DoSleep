@@ -156,8 +156,12 @@ public class LoginByTelActivity extends AppCompatActivity {
             if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
                 if (result == -1)
                     Toast.makeText(LoginByTelActivity.this, "请查收验证码", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(LoginByTelActivity.this, "发送失败！当前手机号发送短信的数量超过每日限额。", Toast.LENGTH_SHORT).show();
+                else{
+                    System.out.println("aaaaSMSSDK:"+data.toString()+"****");
+                    Toast.makeText(LoginByTelActivity.this, "当前appkey发送短信的数量超过限额", Toast.LENGTH_SHORT).show();
+                    setLoginInfo(phoneNumber);
+                }
+
             }else if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
 
                 //提交验证码成功
@@ -264,7 +268,8 @@ public class LoginByTelActivity extends AppCompatActivity {
                                     user.getSex(),user.getBirth(),user.getArea(),user.getHeadImg(),
                                     user.getSlogan(),user.getRegistration(),user.getState()});
                             db.close();
-                            if (user.getUserPwd() != "null"){
+                            String pwd = user.getUserPwd();
+                            if (!pwd.equals("null")  && !pwd.equals("")){
                                 finish();
                             }else {
                                 startActivity(new Intent(LoginByTelActivity.this,PwdActivity.class));

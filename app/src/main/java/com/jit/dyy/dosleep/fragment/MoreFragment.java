@@ -98,6 +98,10 @@ public class MoreFragment extends Fragment implements AdapterView.OnItemClickLis
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent();
         switch (position) {//todo
+            case 0:
+                intent.setClass(getContext(),WebviewActivity.class);
+                startActivity(intent);
+                break;
             case 1:
                 intent.setClass(getContext(),DiaryActivity.class);
                 startActivity(intent);
